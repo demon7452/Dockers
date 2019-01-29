@@ -1,0 +1,13 @@
+gitlab:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      gitlab_rails['gitlab_shell_ssh_port'] = 22
+  ports:
+    - '19090:9090'
+    - '33:22'
+  volumes:
+    - './gitlab/config:/etc/gitlab'
+    - './gitlab/logs:/var/log/gitlab'
+    - './gitlab/data:/var/opt/gitlab'

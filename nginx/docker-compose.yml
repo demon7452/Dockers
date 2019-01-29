@@ -1,0 +1,10 @@
+nginx:
+  image: nginx
+  volumes:
+    - ./nginx/mysite.template:/etc/nginx/conf.d/mysite.template
+  ports:
+    - "10080:80"
+  environment:
+    - NGINX_HOST=xiong.com
+    - NGINX_PORT=80
+  command: /bin/bash -c "envsubst < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"

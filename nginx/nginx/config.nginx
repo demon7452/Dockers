@@ -1,0 +1,21 @@
+events{
+    worker_connections 9999;
+}
+
+http{
+
+    server{
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root static;
+            index index.html;
+        }
+
+        location /images/ {
+            root static/images;
+            autoindex on;
+        }
+    }
+}

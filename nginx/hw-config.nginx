@@ -1,3 +1,5 @@
+user root;
+
 events{
     worker_connections 9999;
 }
@@ -13,8 +15,12 @@ http{
             index index.html;
         }
 
+        location /hw/ {
+            proxy_pass http://localhost:8888;
+        }
+
         location /images/ {
-            root static/images;
+            root static;
             autoindex on;
         }
     }

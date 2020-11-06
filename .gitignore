@@ -1,2 +1,5 @@
 **/.idea/**
 **/mysql/**
+**/discuz/db/**
+**/discuz/php/**
+**/wordpress/db_data/**

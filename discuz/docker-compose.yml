@@ -1,0 +1,24 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: discuz_web
+    volumes:
+    - ./php:/var/www/html
+    ports:
+    - 8088:80
+    depends_on:
+    - db
+  db:
+    image: mysql
+    container_name: discuz_db
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    - 3334:3306
+    volumes:
+    - ./db:/var/lib/mysql

@@ -1,0 +1,32 @@
+# Use root/example as user/password credentials
+version: '3.3'
+
+services:
+  wp-db:
+    image: mysql:5.7
+    container_name: mysql-wordpress
+    volumes:
+    - ./db_data:/var/lib/mysql
+    restart: always
+    ports:
+      - "3334:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: wordpress@123
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+  wordpress:
+    depends_on:
+    - wp-db
+    image: wordpress:latest
+    container_name: wordpress
+    ports:
+    - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wp-db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+#volumes:
+#  db_data: {}

@@ -1,0 +1,13 @@
+version: '3'
+services:
+  database:
+    image: "postgres" # use latest official postgres version
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: issue
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./dbData:/var/lib/postgresql/data/

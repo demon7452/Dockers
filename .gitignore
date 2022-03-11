@@ -1,4 +1,5 @@
 **/.idea/**
+*.jar
 **/mysql/**
 **/discuz/db/**
 **/discuz/php/**
